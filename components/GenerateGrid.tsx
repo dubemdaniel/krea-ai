@@ -1,8 +1,15 @@
-import React from 'react';
-import { 
-  Image, Video, Sparkles, Zap, Edit3, Mic, 
-  RotateCcw, Target, ExternalLink 
-} from 'lucide-react';
+import React from "react";
+import {
+  Image,
+  Video,
+  Sparkles,
+  Zap,
+  Edit3,
+  Mic,
+  RotateCcw,
+  Target,
+  ExternalLink,
+} from "lucide-react";
 
 const GenerateToolsGrid = () => {
   const generateTools = [
@@ -14,7 +21,7 @@ const GenerateToolsGrid = () => {
       description: "Generate images with custom styles in PNG and WebP/gen.",
       action: "Open",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      iconBg: "bg-purple-600 dark:bg-purple-500"
+      iconBg: "bg-purple-600 dark:bg-purple-500",
     },
     {
       id: 2,
@@ -22,8 +29,8 @@ const GenerateToolsGrid = () => {
       title: "Video",
       description: "Generate videos with Haiku, Pika, Runway, LumaI, and more.",
       action: "Open",
-      bgColor: "bg-orange-50 dark:bg-orange-900/20", 
-      iconBg: "bg-orange-500 dark:bg-orange-400"
+      bgColor: "bg-orange-50 dark:bg-orange-900/20",
+      iconBg: "bg-orange-500 dark:bg-orange-400",
     },
     {
       id: 3,
@@ -32,66 +39,69 @@ const GenerateToolsGrid = () => {
       description: "Realtime AI rendering on a canvas. Paint feedback loops.",
       action: "Open",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-blue-500 dark:bg-blue-400"
+      iconBg: "bg-blue-500 dark:bg-blue-400",
     },
     {
       id: 4,
       icon: <Zap className="w-4 h-4" />,
-      title: "Enhancer", 
+      title: "Enhancer",
       subtitle: "NEW",
       description: "Upscale and enhance images and videos up to 20x.",
       action: "Open",
-      bgColor: "bg-gray-900 dark:bg-gray-800",
-      iconBg: "bg-gray-700 dark:bg-gray-600",
-      isDark: true
+      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      iconBg: "bg-blue-500 dark:bg-blue-400",
     },
     {
       id: 5,
       icon: <Edit3 className="w-4 h-4" />,
       title: "Edit",
       subtitle: "NEW",
-      description: "Add objects, change style, or expand photos and generations.",
+      description:
+        "Add objects, change style, or expand photos and generations.",
       action: "Open",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      iconBg: "bg-purple-600 dark:bg-purple-500"
+      iconBg: "bg-purple-600 dark:bg-purple-500",
     },
     {
       id: 6,
       icon: <Mic className="w-4 h-4" />,
       title: "Video Lipsync",
       subtitle: "NEW",
-      description: "Lip sync any video and audio. Generate realistic mouth movements.", 
+      description:
+        "Lip sync any video and audio. Generate realistic mouth movements.",
       action: "Open",
       bgColor: "bg-green-50 dark:bg-green-900/20",
-      iconBg: "bg-green-600 dark:bg-green-500"
+      iconBg: "bg-green-600 dark:bg-green-500",
     },
     {
       id: 7,
       icon: <RotateCcw className="w-4 h-4" />,
       title: "Motion Transfer",
-      subtitle: "NEW", 
+      subtitle: "NEW",
       description: "Transfer motion to images and animate characters.",
       action: "Open",
-      bgColor: "bg-gray-900 dark:bg-gray-800",
-      iconBg: "bg-gray-700 dark:bg-gray-600",
-      isDark: true
+      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      iconBg: "bg-blue-500 dark:bg-blue-400",
     },
     {
       id: 8,
       icon: <Target className="w-4 h-4" />,
       title: "Train",
-      description: "Teach Krea to replicate your style, products, or characters.",
+      description:
+        "Teach Krea to replicate your style, products, or characters.",
       action: "Open",
       bgColor: "bg-gray-50 dark:bg-gray-800/50",
-      iconBg: "bg-gray-500 dark:bg-gray-400"
-    }
+      iconBg: "bg-gray-500 dark:bg-gray-400",
+    },
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Generate</h2>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          Generate
+        </h2>
         <button className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors">
           <span>Show all</span>
           <ExternalLink className="w-3 h-3" />
@@ -103,34 +113,42 @@ const GenerateToolsGrid = () => {
         {generateTools.map((tool) => (
           <div
             key={tool.id}
-            className={`${tool.bgColor} rounded-lg p-4 hover:scale-[1.02] transition-all duration-200 cursor-pointer group`}
+            className={` rounded-lg py-4 px-1 hover:scale-[1.02] transition-all duration-200 cursor-pointer group`}
           >
             {/* Header with Icon and Action */}
             <div className="flex items-center justify-between mb-3">
-              <div className={`w-7 h-7 ${tool.iconBg} rounded-md flex items-center justify-center text-white`}>
+              <div
+                className={`w-14 h-10 ${tool.iconBg} rounded-md flex items-center justify-center text-white`}
+              >
                 {tool.icon}
               </div>
+
+              <div className="ml-1.5">
+                {/* Title Row */}
+                <div className="flex items-center gap-2 ">
+                  <h3 className="text-xs font-semibold text-gray-900 dark:text-gray-100">
+                    {tool.title}
+                  </h3>
+                  {tool.subtitle && (
+                    <span className="bg-blue-500 dark:bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded-2xl font-medium">
+                      {tool.subtitle}
+                    </span>
+                  )}
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-gray-500 dark:text-gray-300">
+                  {tool.description}
+                </p>
+              </div>
+
+                    <div className="bg-gray-100  px-3 py-1.5 rounded-3xl flex dark:bg-gray-800">
+
               <button className="text-xs font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
                 {tool.action}
               </button>
+                    </div>
             </div>
-            
-            {/* Title Row */}
-            <div className="flex items-center gap-2 mb-2">
-              <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                {tool.title}
-              </h3>
-              {tool.subtitle && (
-                <span className="bg-blue-500 dark:bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded font-medium">
-                  {tool.subtitle}
-                </span>
-              )}
-            </div>
-            
-            {/* Description */}
-            <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
-              {tool.description}
-            </p>
           </div>
         ))}
       </div>
