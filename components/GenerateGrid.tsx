@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Image,
+  Image as Imagee,
   Video,
   Sparkles,
   Zap,
@@ -15,7 +15,7 @@ const GenerateToolsGrid = () => {
   const generateTools = [
     {
       id: 1,
-      icon: <Image className="w-4 h-4" />,
+      icon: <Imagee className="w-4 h-4" />,
       title: "Image",
       subtitle: "NEW",
       description: "Generate images with custom styles in PNG and WebP/gen.",
@@ -101,7 +101,7 @@ const GenerateToolsGrid = () => {
       <DropdownHeader />
 
       {/* Responsive Tools Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
         {generateTools.map((tool) => (
           <div
             key={tool.id}

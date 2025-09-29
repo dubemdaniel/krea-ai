@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Analytics from "@/public/analytics.jpeg";
@@ -20,6 +20,8 @@ interface Slide {
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -79,26 +81,6 @@ const HeroCarousel: React.FC = () => {
       bgImage: OpenSource,
       bgGradient: "from-indigo-600/70 to-blue-800/80",
     },
-    {
-      title: "AI Studio",
-      subtitle: "Creative AI Tools",
-      description:
-        "Explore our comprehensive suite of AI-powered creative tools. From image generation to text processing, unleash your creativity with cutting-edge technology.",
-      buttonText: "Explore Studio",
-      tag: "CREATIVE SUITE",
-      bgImage: Wan,
-      bgGradient: "from-purple-600/70 to-pink-800/80",
-    },
-    {
-      title: "Pro Vision",
-      subtitle: "Advanced Analytics",
-      description:
-        "Get detailed insights and analytics for your AI-generated content. Track performance, optimize results, and make data-driven decisions for better outcomes.",
-      buttonText: "View Analytics",
-      tag: "ANALYTICS PLATFORM",
-      bgImage: Analytics,
-      bgGradient: "from-green-600/70 to-teal-800/80",
-    },
   ];
 
   const nextSlide = (): void => {
@@ -113,10 +95,40 @@ const HeroCarousel: React.FC = () => {
     setCurrentSlide(index);
   };
 
+  // Handle swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+
+    // Sensitivity threshold
+    if (distance > 50) {
+      nextSlide();
+    } else if (distance < -50) {
+      prevSlide();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
-    <div className="mb-12 md:mt-16">
+    <div className="mb-12 md:mt-16 mt-8">
       {/* Carousel Container */}
-      <div className="relative overflow-hidden">
+      <div
+        className="relative overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{
@@ -136,6 +148,7 @@ const HeroCarousel: React.FC = () => {
                   width={800}
                   height={400}
                   className="w-full h-full object-cover"
+                  priority
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-r ${slide.bgGradient}`}
