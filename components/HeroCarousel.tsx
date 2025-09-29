@@ -98,7 +98,7 @@ const HeroCarousel: React.FC = () => {
   return (
      <div className="mb-12 md:mt-16">
       {/* Carousel Container */}
-      <div className="relative overflow-hidden">
+      <div className="relative ">
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{
