@@ -2,6 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Analytics from "@/public/analytics.jpeg";
+import OpenSource from "@/public/openSource.jpeg";
+import Wan from "@/public/wan.jpeg";
 
 interface Slide {
   title: string;
@@ -9,16 +13,15 @@ interface Slide {
   description: string;
   buttonText: string;
   tag: string;
-  bgImage: string;
+  bgImage: string | any;
   bgGradient: string;
 }
 
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [isMobile, setIsMobile] = useState(false)
-  
-   useEffect(() => {
-    // Only run on client
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -33,8 +36,7 @@ const HeroCarousel: React.FC = () => {
         "Generate complex images with the brand new and powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic textures.",
       buttonText: "Try WAN 2.2",
       tag: "NEW INSIDE MODEL",
-      bgImage:
-        "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=800&h=400&fit=crop",
+      bgImage: Wan,
       bgGradient: "from-orange-600/70 to-amber-800/80",
     },
     {
@@ -44,8 +46,7 @@ const HeroCarousel: React.FC = () => {
         "We're making the weights to our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or experiment with it in Krea Image.",
       buttonText: "Try FLUX.1",
       tag: "FLUX MODEL",
-      bgImage:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop",
+      bgImage: OpenSource,
       bgGradient: "from-blue-600/70 to-purple-800/80",
     },
     {
@@ -55,8 +56,7 @@ const HeroCarousel: React.FC = () => {
         "Explore our comprehensive suite of AI-powered creative tools. From image generation to text processing, unleash your creativity with cutting-edge technology.",
       buttonText: "Explore Studio",
       tag: "CREATIVE SUITE",
-      bgImage:
-        "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=800&h=400&fit=crop",
+      bgImage: Wan,
       bgGradient: "from-purple-600/70 to-pink-800/80",
     },
     {
@@ -66,8 +66,7 @@ const HeroCarousel: React.FC = () => {
         "Get detailed insights and analytics for your AI-generated content. Track performance, optimize results, and make data-driven decisions for better outcomes.",
       buttonText: "View Analytics",
       tag: "ANALYTICS PLATFORM",
-      bgImage:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+      bgImage: Analytics,
       bgGradient: "from-green-600/70 to-teal-800/80",
     },
     {
@@ -77,9 +76,28 @@ const HeroCarousel: React.FC = () => {
         "Advanced neural network architectures for complex AI tasks. Train and deploy sophisticated models with our cutting-edge infrastructure.",
       buttonText: "Start Training",
       tag: "ML PLATFORM",
-      bgImage:
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
+      bgImage: OpenSource,
       bgGradient: "from-indigo-600/70 to-blue-800/80",
+    },
+    {
+      title: "AI Studio",
+      subtitle: "Creative AI Tools",
+      description:
+        "Explore our comprehensive suite of AI-powered creative tools. From image generation to text processing, unleash your creativity with cutting-edge technology.",
+      buttonText: "Explore Studio",
+      tag: "CREATIVE SUITE",
+      bgImage: Wan,
+      bgGradient: "from-purple-600/70 to-pink-800/80",
+    },
+    {
+      title: "Pro Vision",
+      subtitle: "Advanced Analytics",
+      description:
+        "Get detailed insights and analytics for your AI-generated content. Track performance, optimize results, and make data-driven decisions for better outcomes.",
+      buttonText: "View Analytics",
+      tag: "ANALYTICS PLATFORM",
+      bgImage: Analytics,
+      bgGradient: "from-green-600/70 to-teal-800/80",
     },
   ];
 
@@ -96,9 +114,9 @@ const HeroCarousel: React.FC = () => {
   };
 
   return (
-     <div className="mb-12 md:mt-16">
+    <div className="mb-12 md:mt-16">
       {/* Carousel Container */}
-      <div className="relative ">
+      <div className="relative overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{
@@ -112,9 +130,11 @@ const HeroCarousel: React.FC = () => {
             >
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img
+                <Image
                   src={slide.bgImage}
                   alt={slide.title}
+                  width={800}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
                 <div
@@ -174,13 +194,13 @@ const HeroCarousel: React.FC = () => {
         <div className="absolute right-0 flex space-x-2">
           <button
             onClick={prevSlide}
-            className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200 border hover:border-gray-300 group"
+            className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200 hover:border-gray-300 group"
           >
             <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-200 group-hover:scale-110" />
           </button>
           <button
             onClick={nextSlide}
-            className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200 border hover:border-gray-300 group"
+            className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200  hover:border-gray-300 group"
           >
             <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-200 group-hover:scale-110" />
           </button>

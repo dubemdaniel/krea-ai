@@ -116,7 +116,7 @@ const GenerateToolsGrid = () => {
                 {tool.icon}
               </div>
 
-              {/* Title + Description */}
+              {/* Title + Description text*/}
               <div className="ml-1.5 flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-xs font-semibold text-gray-900 dark:text-gray-100">
