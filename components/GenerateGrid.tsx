@@ -8,8 +8,8 @@ import {
   Mic,
   RotateCcw,
   Target,
-  ExternalLink,
 } from "lucide-react";
+import DropdownHeader from "./DropdownHeader";
 
 const GenerateToolsGrid = () => {
   const generateTools = [
@@ -98,15 +98,7 @@ const GenerateToolsGrid = () => {
   return (
     <div className="">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-          Generate
-        </h2>
-        <button className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center gap-1 transition-colors">
-          <span>Show all</span>
-          <ExternalLink className="w-3 h-3" />
-        </button>
-      </div>
+      <DropdownHeader />
 
       {/* Tools Grid - 2 rows x 4 columns */}
       <div className="grid grid-cols-4 gap-3">
@@ -118,7 +110,7 @@ const GenerateToolsGrid = () => {
             {/* Header with Icon and Action */}
             <div className="flex items-center justify-between mb-3">
               <div
-                className={`w-14 h-10 ${tool.iconBg} rounded-md flex items-center justify-center text-white`}
+                className={`flex-shrink-0 w-10 h-10 ${tool.iconBg} rounded-lg flex items-center justify-center text-white`}
               >
                 {tool.icon}
               </div>
@@ -130,24 +122,23 @@ const GenerateToolsGrid = () => {
                     {tool.title}
                   </h3>
                   {tool.subtitle && (
-                    <span className="bg-blue-500 dark:bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded-2xl font-medium">
+                    <span className="bg-blue-500 dark:bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded-2xl font-medium flex items-center align-middle justify-center">
                       {tool.subtitle}
                     </span>
                   )}
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-gray-500 dark:text-gray-300">
+                <p className="text-[10px] text-gray-500 dark:text-gray-300">
                   {tool.description}
                 </p>
               </div>
 
-                    <div className="bg-gray-100  px-3 py-1.5 rounded-3xl flex dark:bg-gray-800">
-
-              <button className="text-xs font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                {tool.action}
-              </button>
-                    </div>
+              <div className="bg-gray-100  px-3 py-1.5 rounded-3xl flex dark:bg-gray-800">
+                <button className="text-xs font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                  {tool.action}
+                </button>
+              </div>
             </div>
           </div>
         ))}
