@@ -96,45 +96,45 @@ const GenerateToolsGrid = () => {
   ];
 
   return (
-    <div className="">
+    <div>
       {/* Section Header */}
       <DropdownHeader />
 
-      {/* Tools Grid - 2 rows x 4 columns */}
-      <div className="grid grid-cols-4 gap-3">
+      {/* Responsive Tools Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {generateTools.map((tool) => (
           <div
             key={tool.id}
-            className={` rounded-lg py-4 px-1 hover:scale-[1.02] transition-all duration-200 cursor-pointer group`}
+            className="rounded-lg py-4 px-2 hover:scale-[1.02] transition-all duration-200 cursor-pointer group"
           >
             {/* Header with Icon and Action */}
             <div className="flex items-center justify-between mb-3">
+              {/* Icon */}
               <div
                 className={`flex-shrink-0 w-10 h-10 ${tool.iconBg} rounded-lg flex items-center justify-center text-white`}
               >
                 {tool.icon}
               </div>
 
-              <div className="ml-1.5">
-                {/* Title Row */}
-                <div className="flex items-center gap-2 ">
+              {/* Title + Description */}
+              <div className="ml-1.5 flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-xs font-semibold text-gray-900 dark:text-gray-100">
                     {tool.title}
                   </h3>
                   {tool.subtitle && (
-                    <span className="bg-blue-500 dark:bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded-2xl font-medium flex items-center align-middle justify-center">
+                    <span className="bg-blue-500 dark:bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded-2xl font-medium">
                       {tool.subtitle}
                     </span>
                   )}
                 </div>
-
-                {/* Description */}
                 <p className="text-[10px] text-gray-500 dark:text-gray-300">
                   {tool.description}
                 </p>
               </div>
 
-              <div className="bg-gray-100  px-3 py-1.5 rounded-3xl flex dark:bg-gray-800">
+              {/* Action Button */}
+              <div className="bg-gray-100 px-3 py-1.5 rounded-3xl flex dark:bg-gray-800 ml-2">
                 <button className="text-xs font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
                   {tool.action}
                 </button>

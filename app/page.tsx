@@ -5,7 +5,7 @@ import GallerySection from "@/components/GallerySection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
+    <main className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300 ">
       <Navbar />
       <section className="max-w-7xl mx-auto px-4">
         <HeroCarousel />

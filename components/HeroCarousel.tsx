@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
@@ -15,6 +15,15 @@ interface Slide {
 
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState(false)
+  
+   useEffect(() => {
+    // Only run on client
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const slides: Slide[] = [
     {
@@ -87,21 +96,21 @@ const HeroCarousel: React.FC = () => {
   };
 
   return (
-    <div className="mb-12 md:mt-16">
+     <div className="mb-12 md:mt-16">
       {/* Carousel Container */}
       <div className="relative overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{
-            transform: `translateX(-${currentSlide * 70}%)`,
+            transform: `translateX(-${currentSlide * (isMobile ? 100 : 70)}%)`,
           }}
         >
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-shrink-0 relative overflow-hidden rounded-2xl  mr-6 md:mr-6"
-              style={{ width: "70%" }}
+              className="flex-shrink-0 relative overflow-hidden rounded-2xl mr-4 md:mr-6 w-full md:w-[70%]"
             >
+              {/* Background Image */}
               <div className="absolute inset-0">
                 <img
                   src={slide.bgImage}
@@ -113,26 +122,29 @@ const HeroCarousel: React.FC = () => {
                 ></div>
               </div>
 
-              <div className="relative z-10 p-4 md:pt-8 px-8 h-full flex flex-col justify-between text-white ">
+              {/* Content */}
+              <div className="relative z-10 p-4 md:pt-8 px-6 md:px-8 h-full flex flex-col justify-between text-white">
                 <div>
                   <span className="text-xs opacity-90 uppercase tracking-wider font-medium">
                     {slide.tag}
                   </span>
-                  <h1 className="text-2xl md:text-6xl md:font-extrabold md:text-center  md:mt-20 font-bold mt-2 mb-2 md:mb-4 leading-tight ">
+
+                  <h1 className="text-xl md:text-6xl font-bold md:font-extrabold md:text-center mt-2 md:mt-20 mb-2 md:mb-4 leading-tight">
                     {slide.title}
                   </h1>
-                      <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4 opacity-95">
-                        {slide.subtitle}
-                      </h2>
-                  <div className="flex justify-between ">
-                    <div>
-                      <p className="text-xs md:text-sm opacity-90 max-w-md leading-relaxed">
-                        {slide.description}
-                      </p>
-                    </div>
-                  <button className="bg-white text-gray-900 px-4 md:px-6 py-2 md:py-3 rounded-3xl flex justify-center items-center font-medium hover:bg-gray-100 transition-all duration-200 w-fit shadow-lg hover:shadow-xl transform hover:scale-105 text-sm md:text-sm md:font-semibold">
-                    {slide.buttonText}
-                  </button>
+
+                  <h2 className="text-base md:text-xl font-semibold mb-2 md:mb-4 opacity-95">
+                    {slide.subtitle}
+                  </h2>
+
+                  <div className="flex flex-col md:flex-row md:justify-between gap-4">
+                    <p className="text-xs md:text-sm opacity-90 max-w-md leading-relaxed">
+                      {slide.description}
+                    </p>
+
+                    <button className="bg-white text-gray-900 px-4 md:px-6 py-2 md:py-3 rounded-3xl flex justify-center items-center font-medium hover:bg-gray-100 transition-all duration-200 w-fit shadow-lg hover:shadow-xl transform hover:scale-105 text-sm md:text-sm md:font-semibold">
+                      {slide.buttonText}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -143,7 +155,7 @@ const HeroCarousel: React.FC = () => {
 
       {/* Navigation controls at bottom */}
       <div className="relative flex justify-center items-center mt-4">
-        {/* Pagination dots - centered */}
+        {/* Pagination dots */}
         <div className="flex space-x-2">
           {slides.map((_, index) => (
             <button
@@ -151,14 +163,14 @@ const HeroCarousel: React.FC = () => {
               onClick={() => goToSlide(index)}
               className={`transition-all duration-300 rounded-full w-2 h-2 ${
                 index === currentSlide
-                  ? " bg-gray-800"
-                  : " bg-gray-300 hover:bg-gray-400"
+                  ? "bg-gray-800"
+                  : "bg-gray-300 hover:bg-gray-400"
               }`}
             />
           ))}
         </div>
 
-        {/* Navigation arrows*/}
+        {/* Navigation arrows */}
         <div className="absolute right-0 flex space-x-2">
           <button
             onClick={prevSlide}
@@ -166,10 +178,9 @@ const HeroCarousel: React.FC = () => {
           >
             <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-200 group-hover:scale-110" />
           </button>
-
           <button
             onClick={nextSlide}
-            className="w-6 h-6  bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200 border hover:border-gray-300 group"
+            className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-all duration-200 border hover:border-gray-300 group"
           >
             <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-200 group-hover:scale-110" />
           </button>
