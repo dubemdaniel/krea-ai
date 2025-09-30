@@ -1,59 +1,56 @@
 import React from "react";
-import {
-  Image as Imagee,
-  Video,
-  Sparkles,
-  Zap,
-  Edit3,
-  Mic,
-  RotateCcw,
-  Target,
-} from "lucide-react";
+import { Target } from "lucide-react";
+import { MdCellTower } from "react-icons/md";
+import { PiMicrophoneStageFill } from "react-icons/pi";
 import DropdownHeader from "./DropdownHeader";
+import { ImMagicWand } from "react-icons/im";
+import { FaVideo, FaRegImage } from "react-icons/fa6";
+import { HiMiniPaintBrush } from "react-icons/hi2";
+import { BsPersonStandingDress } from "react-icons/bs";
 
 const GenerateToolsGrid = () => {
   const generateTools = [
     {
       id: 1,
-      icon: <Imagee className="w-4 h-4" />,
+      icon: <FaRegImage className="w-4 h-4" />,
       title: "Image",
       subtitle: "NEW",
       description: "Generate images with custom styles in PNG and WebP/gen.",
       action: "Open",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      iconBg: "bg-purple-600 dark:bg-purple-500",
+      bgColor: "bg-gray-50 dark:bg-gray-800/50",
+      iconBg: "bg-gray-500 dark:bg-gray-400",
     },
     {
       id: 2,
-      icon: <Video className="w-4 h-4" />,
+      icon: <FaVideo className="w-4 h-4" />,
       title: "Video",
       description: "Generate videos with Haiku, Pika, Runway, LumaI, and more.",
       action: "Open",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      iconBg: "bg-orange-500 dark:bg-orange-400",
+      iconBg: "bg-yellow-500 dark:bg-yellow-400",
     },
     {
       id: 3,
-      icon: <Sparkles className="w-4 h-4" />,
+      icon: <HiMiniPaintBrush className="w-4 h-4" />,
       title: "Realtime",
       description: "Realtime AI rendering on a canvas. Paint feedback loops.",
       action: "Open",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-blue-500 dark:bg-blue-400",
+      iconBg: "bg-blue-400 dark:bg-blue-400",
     },
     {
       id: 4,
-      icon: <Zap className="w-4 h-4" />,
+      icon: <ImMagicWand className="w-4 h-4" />,
       title: "Enhancer",
       subtitle: "NEW",
       description: "Upscale and enhance images and videos up to 20x.",
       action: "Open",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-blue-500 dark:bg-blue-400",
+    bgColor: "bg-gray-50 dark:bg-gray-800/50",
+      iconBg: "bg-gray-500 dark:bg-gray-400",
     },
     {
       id: 5,
-      icon: <Edit3 className="w-4 h-4" />,
+      icon: <MdCellTower className="w-4 h-4" />,
       title: "Edit",
       subtitle: "NEW",
       description:
@@ -64,24 +61,24 @@ const GenerateToolsGrid = () => {
     },
     {
       id: 6,
-      icon: <Mic className="w-4 h-4" />,
+      icon: <PiMicrophoneStageFill className="w-4 h-4" />,
       title: "Video Lipsync",
       subtitle: "NEW",
       description:
-        "Lip sync any video and audio. Generate realistic mouth movements.",
+        "Lip sync any video and audio.",
       action: "Open",
       bgColor: "bg-green-50 dark:bg-green-900/20",
       iconBg: "bg-green-600 dark:bg-green-500",
     },
     {
       id: 7,
-      icon: <RotateCcw className="w-4 h-4" />,
+      icon: <BsPersonStandingDress className="w-4 h-4" />,
       title: "Motion Transfer",
       subtitle: "NEW",
       description: "Transfer motion to images and animate characters.",
       action: "Open",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-blue-500 dark:bg-blue-400",
+      iconBg: "bg-gray-800 dark:bg-gray-600",
     },
     {
       id: 8,
