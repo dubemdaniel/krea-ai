@@ -24,7 +24,7 @@ export default function Navbar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <nav className="w-full flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+    <nav className="w-full flex items-center justify-between px-4 py-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
       {/* Left Section */}
       <div className="flex items-center gap-2">
         <KreaLogo className="md:mr-4" />
