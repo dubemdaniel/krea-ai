@@ -18,7 +18,7 @@ const GenerateToolsGrid = () => {
       description: "Generate images with custom styles in PNG and WebP/gen.",
       action: "Open",
       bgColor: "bg-gray-50 dark:bg-gray-800/50",
-      iconBg: "bg-gray-500 dark:bg-gray-400",
+      iconGradient: "from-gray-500 to-gray-500/20 dark:from-gray-400 dark:to-gray-400/20",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ const GenerateToolsGrid = () => {
       description: "Generate videos with Haiku, Pika, Runway, LumaI, and more.",
       action: "Open",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      iconBg: "bg-yellow-500 dark:bg-yellow-400",
+      iconGradient: "from-yellow-500 to-yellow-500/20 dark:from-yellow-400 dark:to-yellow-400/20",
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const GenerateToolsGrid = () => {
       description: "Realtime AI rendering on a canvas. Paint feedback loops.",
       action: "Open",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-blue-400 dark:bg-blue-400",
+      iconGradient: "from-blue-400 to-blue-400/20 dark:from-blue-400 dark:to-blue-400/20",
     },
     {
       id: 4,
@@ -45,8 +45,8 @@ const GenerateToolsGrid = () => {
       subtitle: "NEW",
       description: "Upscale and enhance images and videos up to 20x.",
       action: "Open",
-    bgColor: "bg-gray-50 dark:bg-gray-800/50",
-      iconBg: "bg-gray-500 dark:bg-gray-400",
+      bgColor: "bg-gray-50 dark:bg-gray-800/50",
+      iconGradient: "from-gray-500 to-gray-500/20 dark:from-gray-400 dark:to-gray-400/20",
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ const GenerateToolsGrid = () => {
         "Add objects, change style, or expand photos and generations.",
       action: "Open",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      iconBg: "bg-purple-600 dark:bg-purple-500",
+      iconGradient: "from-purple-600 to-purple-600/20 dark:from-purple-500 dark:to-purple-500/20",
     },
     {
       id: 6,
@@ -68,7 +68,7 @@ const GenerateToolsGrid = () => {
         "Lip sync any video and audio.",
       action: "Open",
       bgColor: "bg-green-50 dark:bg-green-900/20",
-      iconBg: "bg-green-600 dark:bg-green-500",
+      iconGradient: "from-green-600 to-green-600/20 dark:from-green-500 dark:to-green-500/20",
     },
     {
       id: 7,
@@ -78,7 +78,7 @@ const GenerateToolsGrid = () => {
       description: "Transfer motion to images and animate characters.",
       action: "Open",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      iconBg: "bg-gray-800 dark:bg-gray-600",
+      iconGradient: "from-gray-800 to-gray-800/20 dark:from-gray-600 dark:to-gray-600/20",
     },
     {
       id: 8,
@@ -88,7 +88,7 @@ const GenerateToolsGrid = () => {
         "Teach Krea to replicate your style, products, or characters.",
       action: "Open",
       bgColor: "bg-gray-50 dark:bg-gray-800/50",
-      iconBg: "bg-gray-500 dark:bg-gray-400",
+      iconGradient: "from-gray-500 to-gray-500/20 dark:from-gray-400 dark:to-gray-400/20",
     },
   ];
 
@@ -98,7 +98,7 @@ const GenerateToolsGrid = () => {
       <DropdownHeader />
 
       {/* Responsive Tools Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-1">
         {generateTools.map((tool) => (
           <div
             key={tool.id}
@@ -106,9 +106,9 @@ const GenerateToolsGrid = () => {
           >
             {/* Header with Icon and Action */}
             <div className="flex items-center justify-between mb-3">
-              {/* Icon */}
+              {/* Icon with Gradient Background */}
               <div
-                className={`flex-shrink-0 w-10 h-10 ${tool.iconBg} rounded-lg flex items-center justify-center text-white`}
+                className={`flex-shrink-0 w-10 h-10 bg-gradient-to-b ${tool.iconGradient} rounded-lg flex items-center justify-center text-white`}
               >
                 {tool.icon}
               </div>
